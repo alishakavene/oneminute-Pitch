@@ -1,3 +1,9 @@
+{% extends 'base.html'%}
+<!-- Styles block -->
+
+{% block styles%} {{ super() }}
+<link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}"> {% endblock %}
+<!-- Content block -->
 <html>
 
 <head>
@@ -9,7 +15,15 @@
 </head>
 
 <body>
-
+    {% block content %} {% for pitch in pitches %}
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">{{Pitch.pitch_content}}</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div>
+    {% endfor %} {% endblock %}
 </body>
 
 </html>
